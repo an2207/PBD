@@ -111,5 +111,17 @@ public class Wlasciciel extends OsobaFizyczna {
     public void setTelefon(String telefon) {
         this.telefon = telefon;
     }
+    
+    //sunday metoda - Wypisuje kwatery, które są własnością danego właściela
+    @Override 
+    public ArrayList<Kwatera> queryKwatery(){ 
+		 ArrayList<Kwatera> kwatery = new ArrayList<Kwatera>();
+         ListIterator litr=this.oplaty.listIterator();
+		 while(litr.hasNext()){ 
+		    Kwatera kw=(Kwatera)litr.next();
+		    kwatery.add(kw);
+		 }
+		 return kwatery;
+    }
 
 }
