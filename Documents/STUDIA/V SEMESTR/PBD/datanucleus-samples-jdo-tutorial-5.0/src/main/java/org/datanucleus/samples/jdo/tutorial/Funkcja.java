@@ -7,6 +7,9 @@ package org.datanucleus.samples.jdo.tutorial;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.jdo.annotations.Column;
+import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.ForeignKeyAction;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -21,7 +24,9 @@ public class Funkcja implements Serializable {
     
     @PrimaryKey @Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT) 
     int funkcjaId;
+    @Column(jdbcType="VARCHAR", length=64)
     String nazwa;
+    @ForeignKey(name="fk_Pracownicy_Funckja", deleteAction = ForeignKeyAction.RESTRICT, updateAction=ForeignKeyAction.CASCADE)
     ArrayList<OsobaFizyczna> pracownicy;
     
     public String getNazwa() {

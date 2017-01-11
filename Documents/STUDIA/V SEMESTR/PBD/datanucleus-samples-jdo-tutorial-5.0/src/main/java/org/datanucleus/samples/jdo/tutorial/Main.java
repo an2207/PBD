@@ -188,7 +188,7 @@ public class Main
         {
             tx.begin();
             System.out.println("dodajemy adres");
-            Adres adr = new Adres("ta ulica");
+            Adres adr = new Adres("ta ulica ma ponad szeœcdziesiat cztery znaki tak sadze a jednak nie tam gdzie dziecielina pala jak swierzop gryka biala");
             
             pm.makePersistent(adr);
  
@@ -209,6 +209,39 @@ public class Main
             pm.close();
         }
         System.out.println("");
+        
+         pm = pmf.getPersistenceManager();
+        tx = pm.currentTransaction();
+                try
+        {
+            tx.begin();
+            System.out.println("Osoba fizyczna");
+            OsobaFizyczna osoba = new OsobaFizyczna("Marcin","Mateusz","Wisniewski","Imie","222","tojestemail");
+           
+            
+            pm.makePersistent(osoba);
+ 
+            tx.commit();
+            System.out.println(osoba.getPesel());
+            osoba.setPesel("nachiczewan");
+            osoba.setPesel("333");
+            osoba.setPesel("01234567890");
+            System.out.println(osoba.getPesel());
+        }
+        catch (Exception e)
+        {
+            System.out.println("Exception persisting data : " + e.getMessage());
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+        System.out.println("");
+        
         
         System.out.println("");
         

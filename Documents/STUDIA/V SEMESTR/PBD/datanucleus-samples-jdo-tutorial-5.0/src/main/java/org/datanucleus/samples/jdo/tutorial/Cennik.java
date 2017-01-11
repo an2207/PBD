@@ -5,6 +5,7 @@
  */
 package org.datanucleus.samples.jdo.tutorial;
 
+import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -21,6 +22,7 @@ public class Cennik  {
     @Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT) 
     int cennikId;
     Double cena;
+    @Column(length=3)
     int liczbaLat;
     
     public Double getCena() {

@@ -5,6 +5,7 @@
  */
 package org.datanucleus.samples.jdo.tutorial;
 
+import javax.jdo.annotations.Column;
 import javax.jdo.annotations.PersistenceCapable;
 
 /**
@@ -14,10 +15,15 @@ import javax.jdo.annotations.PersistenceCapable;
 @PersistenceCapable
 public class OsobaFizyczna extends Osoba{
   
+    @Column(jdbcType="VARCHAR", length=64)
     String imie;
+    @Column(jdbcType = "VARCHAR", length = 64,allowsNull = "true")
     String drugieImie;
+    @Column(jdbcType="VARCHAR", length=64)
     String nazwisko;
+    @Column(jdbcType = "VARCHAR", length = 64,allowsNull = "true")
     String drugieNazwisko;
+    @Column(jdbcType="VARCHAR", length=11)
     String pesel;
     
     
@@ -58,7 +64,14 @@ public class OsobaFizyczna extends Osoba{
     }
 
     public void setPesel(String pesel) {
-        this.pesel = pesel;
+        if(pesel.matches("\\d{11}"))
+        {
+            this.pesel = pesel;
+        }
+        else 
+        {
+            System.out.println("Z³y pesel");
+        }
     }
 
     public String getEmail() {

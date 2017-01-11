@@ -5,6 +5,7 @@
  */
 package org.datanucleus.samples.jdo.tutorial;
 
+import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -22,11 +23,22 @@ public class Adres {
     @Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT)   
     protected long adresId;
     
+    @Column(jdbcType="VARCHAR", length=64)
     String ulica;
+    
+    @Column(jdbcType="VARCHAR", length=8)
     String nrBudynku;
+    
+    @Column(jdbcType="VARCHAR", length=8)
     String nrLokalu;
+    
+    @Column(jdbcType="VARCHAR", length=6)
     String kodPocztowy;
+    
+    @Column(jdbcType="VARCHAR", length=64)
     String miejscowosc;
+    
+    @Column(jdbcType="VARCHAR", length=64)
     String kraj;
 
     public long getAdresId() {
