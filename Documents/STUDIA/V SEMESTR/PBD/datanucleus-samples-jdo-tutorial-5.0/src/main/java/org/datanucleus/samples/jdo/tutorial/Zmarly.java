@@ -7,6 +7,9 @@ package org.datanucleus.samples.jdo.tutorial;
 
 import java.util.ArrayList;
 import java.util.Date;
+import javax.jdo.annotations.Column;
+import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.ForeignKeyAction;
 import javax.jdo.annotations.PersistenceCapable;
 
 /**
@@ -17,10 +20,13 @@ import javax.jdo.annotations.PersistenceCapable;
 @PersistenceCapable
 public class Zmarly extends OsobaFizyczna{
  
+    @Column(jdbcType = "VARCHAR", length = 64,allowsNull = "true")
     String nazwiskoPanien;
     Date dataUrodzenia;
     Date dataZgonu;
+    @ForeignKey(name="fk_Zmarly_Pogrzeb", deleteAction = ForeignKeyAction.CASCADE, updateAction=ForeignKeyAction.RESTRICT)
     ArrayList<Pogrzeb> pogrzeby;
+    @ForeignKey(name="fk_Zmarly_Akt", deleteAction = ForeignKeyAction.CASCADE, updateAction=ForeignKeyAction.RESTRICT)
     AktZgonu aktZgonu;
 
     public Zmarly(String nazwiskoPanien, Date dataUrodzenia, Date dataZgonu,ArrayList<Pogrzeb> pogrzeby, AktZgonu aktZgonu, String imie, String drugieImie, String nazwisko, String drugieNazwisko, String pesel, String email, String telefon) {
@@ -45,16 +51,32 @@ public class Zmarly extends OsobaFizyczna{
         return dataUrodzenia;
     }
 
-    public void setDataUrodzenia(Date dataUrodzenia) {
-        this.dataUrodzenia = dataUrodzenia;
+    public void setDataUrodzenia(Date dataUr) {
+        if(dataUr.before(this.dataZgonu))
+        {
+            this.dataUrodzenia = dataUr;
+        }
+        else 
+        {
+            System.out.println("Nie mozna urodzic sie po smierci");
+        }
+        
+        
     }
 
     public Date getDataZgonu() {
         return dataZgonu;
     }
 
-    public void setDataZgonu(Date dataZgonu) {
-        this.dataZgonu = dataZgonu;
+    public void setDataZgonu(Date dataZg) {
+        if(dataZg.after(this.dataUrodzenia))
+        {
+            this.dataZgonu = dataZg;
+        }
+        else 
+        {
+            System.out.println("Nie mozna umrzeæ przed narodzinami");
+        }
     }
 
     public String getPesel() {

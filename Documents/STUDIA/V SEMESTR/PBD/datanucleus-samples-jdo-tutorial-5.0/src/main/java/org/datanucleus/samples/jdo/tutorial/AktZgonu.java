@@ -7,6 +7,7 @@ package org.datanucleus.samples.jdo.tutorial;
 
 import java.sql.Time;
 import java.util.Date;
+import javax.jdo.annotations.Column;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
@@ -18,12 +19,17 @@ import javax.jdo.annotations.PrimaryKey;
 public class AktZgonu   {
 
     @PrimaryKey
+    @Column(jdbcType="VARCHAR", length=64)
     String nrAktu;
     Date dataWyst;
     Time godzZgonu;
+    @Column(jdbcType="VARCHAR", length=64)
     String imieOjca;
+    @Column(jdbcType="VARCHAR", length=64)
     String nazwOjca;
+    @Column(jdbcType="VARCHAR", length=64)
     String imieMatki;
+    @Column(jdbcType="VARCHAR", length=64)
     String nazwMatki;
     
     public String getNrAktu() {

@@ -30,7 +30,8 @@ public class Cennik  {
     }
 
     public void setCena(Double cena) {
-        this.cena = cena;
+        if (cena > 0.0)
+            this.cena = cena;
     }
 
     public int getLiczbaLat() {
@@ -38,7 +39,8 @@ public class Cennik  {
     }
 
     public void setLiczbaLat(int liczbaLat) {
-        this.liczbaLat = liczbaLat;
+        if(liczbaLat > 0) 
+            this.liczbaLat = liczbaLat;
     }
 
     public Cennik(Double cena, int liczbaLat) {

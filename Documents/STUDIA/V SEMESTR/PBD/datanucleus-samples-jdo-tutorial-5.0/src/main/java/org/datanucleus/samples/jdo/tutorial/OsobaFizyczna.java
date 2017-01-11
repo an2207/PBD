@@ -7,6 +7,7 @@ package org.datanucleus.samples.jdo.tutorial;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Unique;
 
 /**
  *
@@ -24,6 +25,7 @@ public class OsobaFizyczna extends Osoba{
     @Column(jdbcType = "VARCHAR", length = 64,allowsNull = "true")
     String drugieNazwisko;
     @Column(jdbcType="VARCHAR", length=11)
+    @Unique
     String pesel;
     
     
