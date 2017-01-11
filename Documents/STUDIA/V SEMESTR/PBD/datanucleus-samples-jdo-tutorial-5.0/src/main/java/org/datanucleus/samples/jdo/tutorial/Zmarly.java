@@ -157,4 +157,12 @@ public class Zmarly extends OsobaFizyczna{
     public void setTelefon(String telefon) {
         this.telefon = telefon;
     }
+ 
+    //sunday-metoda - sprawdza czy dany Zmarły w wierszu jest kobietą
+    public boolean isWoman(){ 
+        if(this.imie.substring(this.imie.length()-1).equals("a")) return true;
+        else return false;
+    }
+ 
+ 
 }
