@@ -28,6 +28,10 @@ public class OsobaFizyczna extends Osoba{
     @Unique
     String pesel;
     
+    //sunday dodaje obcy klucz - nasze zlecenia
+    @ForeignKey(name="ZLECENIE_FK", deleteAction = ForeignKeyAction.RESTRICT)
+    ArrayList<Zlecenie> zlecenia;
+    //sunday-----
     
     public String getImie() {
         return imie;
@@ -117,7 +121,27 @@ public class OsobaFizyczna extends Osoba{
         this.drugieNazwisko = drugieNazwisko;
         this.pesel = pesel;
     }
-
+    
+    //sunday lista uslug do wykonania przez pracownika
+    @override
+    public ArrayList<Usluga> queryUslugiDoWykonania(){ 
+        ArrayList<Usluga> uslugi = new ArrayList<Usluga>();
+        if(zlecenia.isEmpty()){
+          ListIterator litr=this.zlecenia.listIterator();
+		      while(litr.hasNext()){ 
+		        Zlecenie z=(Zlecenie)litr.next();
+		        uslugi.add(z);
+		      }
+        }  
+          return uslugi;
+    }  
+		 
+  
+  
+    
+       
+		 
+    
     
 }
 
