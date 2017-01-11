@@ -72,7 +72,7 @@ public class OsobaFizyczna extends Osoba{
         }
         else 
         {
-            System.out.println("Z³y pesel");
+            System.out.println("Zly pesel");
         }
     }
 

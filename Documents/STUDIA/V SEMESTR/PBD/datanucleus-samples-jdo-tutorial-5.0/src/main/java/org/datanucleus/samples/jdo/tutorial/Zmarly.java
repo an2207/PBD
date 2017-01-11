@@ -75,7 +75,7 @@ public class Zmarly extends OsobaFizyczna{
         }
         else 
         {
-            System.out.println("Nie mozna umrzeæ przed narodzinami");
+            System.out.println("Nie mozna umrzec przed narodzinami");
         }
     }
 
@@ -100,7 +100,14 @@ public class Zmarly extends OsobaFizyczna{
     }
 
     public void setAktZgonu(AktZgonu aktZgonu) {
-        this.aktZgonu = aktZgonu;
+       if(aktZgonu.getDataWyst().after(this.dataZgonu))
+        {
+            this.aktZgonu = aktZgonu;
+        }
+        else 
+        {
+            System.out.println("Nie wlasciwa data");
+        }
     }
 
     public String getImie() {

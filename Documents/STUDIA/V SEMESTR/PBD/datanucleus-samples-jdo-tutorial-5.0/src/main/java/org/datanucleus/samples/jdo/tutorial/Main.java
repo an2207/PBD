@@ -188,7 +188,7 @@ public class Main
         {
             tx.begin();
             System.out.println("dodajemy adres");
-            Adres adr = new Adres("ta ulica ma ponad szeœcdziesiat cztery znaki tak sadze a jednak nie tam gdzie dziecielina pala jak swierzop gryka biala");
+            Adres adr = new Adres("ta ulica ma ponad szescdziesiat cztery znaki tak sadze a jednak nie tam gdzie dziecielina pala jak swierzop gryka biala");
             
             pm.makePersistent(adr);
  
@@ -221,12 +221,21 @@ public class Main
             
             pm.makePersistent(osoba);
  
-            tx.commit();
+            
             System.out.println(osoba.getPesel());
             osoba.setPesel("nachiczewan");
             osoba.setPesel("333");
             osoba.setPesel("01234567890");
             System.out.println(osoba.getPesel());
+            
+            OsobaFizyczna osoba2 = new OsobaFizyczna("Marcin","Mateusz","Wisniewski","Imie","01234567892","tojestemail");
+            pm.makePersistent(osoba2);
+ 
+            
+            System.out.println(osoba2.getPesel());
+            osoba2.setPesel("01234567890");
+            System.out.println(osoba2.getPesel());
+            tx.commit();
         }
         catch (Exception e)
         {
