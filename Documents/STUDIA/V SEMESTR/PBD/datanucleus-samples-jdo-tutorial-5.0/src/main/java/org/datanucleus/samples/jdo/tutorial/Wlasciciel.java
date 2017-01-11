@@ -20,7 +20,7 @@ public class Wlasciciel extends OsobaFizyczna {
 
     @ForeignKey(name="ADRES_FK", deleteAction = ForeignKeyAction.RESTRICT)
     Adres adres;
-    @ForeignKey(name="ADRES_FK", deleteAction = ForeignKeyAction.RESTRICT)
+    @ForeignKey(name="OPLATA_FK", deleteAction = ForeignKeyAction.RESTRICT)
     ArrayList<Oplata> oplaty;
 
     public Wlasciciel(String imie, String drugieImie, String nazwisko, String drugieNazwisko, String pesel, String email) {
