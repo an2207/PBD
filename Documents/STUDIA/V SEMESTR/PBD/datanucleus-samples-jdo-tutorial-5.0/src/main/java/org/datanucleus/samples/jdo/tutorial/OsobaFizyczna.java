@@ -5,7 +5,11 @@
  */
 package org.datanucleus.samples.jdo.tutorial;
 
+import java.util.ArrayList;
+import java.util.ListIterator;
 import javax.jdo.annotations.Column;
+import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.ForeignKeyAction;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Unique;
 
@@ -123,14 +127,13 @@ public class OsobaFizyczna extends Osoba{
     }
     
     //sunday lista uslug do wykonania przez pracownika
-    @override
     public ArrayList<Usluga> queryUslugiDoWykonania(){ 
         ArrayList<Usluga> uslugi = new ArrayList<Usluga>();
         if(zlecenia.isEmpty()){
           ListIterator litr=this.zlecenia.listIterator();
 		      while(litr.hasNext()){ 
 		        Zlecenie z=(Zlecenie)litr.next();
-		        uslugi.add(z);
+		        uslugi.add(z.getUsluga());
 		      }
         }  
           return uslugi;

@@ -6,6 +6,7 @@
 package org.datanucleus.samples.jdo.tutorial;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.ForeignKeyAction;
 import javax.jdo.annotations.PersistenceCapable;
@@ -113,7 +114,6 @@ public class Wlasciciel extends OsobaFizyczna {
     }
     
     //sunday metoda - Wypisuje kwatery, które są własnością danego właściela
-    @Override 
     public ArrayList<Kwatera> queryKwatery(){ 
 		 ArrayList<Kwatera> kwatery = new ArrayList<Kwatera>();
          ListIterator litr=this.oplaty.listIterator();
