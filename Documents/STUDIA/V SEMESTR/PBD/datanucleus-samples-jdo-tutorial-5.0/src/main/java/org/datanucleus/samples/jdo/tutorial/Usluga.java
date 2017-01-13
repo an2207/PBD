@@ -5,6 +5,7 @@
  */
 package org.datanucleus.samples.jdo.tutorial;
 
+import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -20,6 +21,7 @@ public class Usluga {
     @PrimaryKey @Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT)
     int uslugaId;
     String nazwa;
+    @Column(scale = 2)
     Double cena;
     Integer szacCzas;
 
@@ -36,7 +38,14 @@ public class Usluga {
     }
 
     public void setCena(Double cena) {
-        this.cena = cena;
+        if(cena > 0)
+            {
+                this.cena = cena;
+            }
+        else
+            {
+                System.out.println("Cena nie mo¿e byæ ujemna!");
+            }
     }
 
     public Integer getSzacCzas() {
@@ -44,13 +53,36 @@ public class Usluga {
     }
 
     public void setSzacCzas(Integer szacCzas) {
-        this.szacCzas = szacCzas;
+        if(szacCzas > 0)
+            {
+                this.szacCzas = szacCzas;
+            }
+        else
+            {
+                System.out.println("Podano bledny czas uslugi!");
+            }
     }
 
     public Usluga(String nazwa, Double cena, Integer szacCzas) {
         this.nazwa = nazwa;
-        this.cena = cena;
-        this.szacCzas = szacCzas;
+        if(cena > 0)
+            {
+                this.cena = cena;
+            }
+        else
+            {
+                System.out.println("Cena nie mo¿e byæ ujemna!");
+                this.cena = 0.0;
+            }
+        if(szacCzas > 0)
+            {
+                this.szacCzas = szacCzas;
+            }
+        else
+            {
+                System.out.println("Podano bledny czas uslugi!");
+                this.szacCzas = 0;
+            }
     }
 
 }

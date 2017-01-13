@@ -8,6 +8,7 @@ package org.datanucleus.samples.jdo.tutorial;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.jdo.annotations.Column;
+import javax.jdo.annotations.Element;
 import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.ForeignKeyAction;
 import javax.jdo.annotations.PersistenceCapable;
@@ -25,8 +26,10 @@ public class Zmarly extends OsobaFizyczna{
     Date dataUrodzenia;
     Date dataZgonu;
     @ForeignKey(name="fk_Zmarly_Pogrzeb", deleteAction = ForeignKeyAction.CASCADE, updateAction=ForeignKeyAction.RESTRICT)
+    @Element(column="POGRZEBID")
     ArrayList<Pogrzeb> pogrzeby;
     @ForeignKey(name="fk_Zmarly_Akt", deleteAction = ForeignKeyAction.CASCADE, updateAction=ForeignKeyAction.RESTRICT)
+    @Column(name="NRAKTU")
     AktZgonu aktZgonu;
 
     public Zmarly(String nazwiskoPanien, Date dataUrodzenia, Date dataZgonu,ArrayList<Pogrzeb> pogrzeby, AktZgonu aktZgonu, String imie, String drugieImie, String nazwisko, String drugieNazwisko, String pesel, String email, String telefon) {
