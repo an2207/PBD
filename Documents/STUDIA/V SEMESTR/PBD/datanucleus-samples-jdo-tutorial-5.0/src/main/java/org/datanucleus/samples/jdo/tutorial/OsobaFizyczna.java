@@ -34,6 +34,7 @@ public class OsobaFizyczna extends Osoba{
     
     //sunday dodaje obcy klucz - nasze zlecenia
     @ForeignKey(name="ZLECENIE_FK", deleteAction = ForeignKeyAction.RESTRICT)
+    @Column(name="ZLECENIEID")
     ArrayList<Zlecenie> zlecenia;
     //sunday-----
     

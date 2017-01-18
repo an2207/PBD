@@ -32,7 +32,7 @@ public class Cennik  {
     public void setCena(Double cena) {
         if (cena > 0.0)
             this.cena = cena;
-        else System.out.println("Cena nie mo¿e byæ ujemna");
+        else System.out.println("Cena nie moze byc ujemna");
     }
 
     public int getLiczbaLat() {
@@ -42,7 +42,7 @@ public class Cennik  {
     public void setLiczbaLat(int liczbaLat) {
         if(liczbaLat > 0) 
             this.liczbaLat = liczbaLat;
-         else System.out.println("Liczba lat nie mo¿e byæ ujemna");
+         else System.out.println("Liczba lat nie moze byc ujemna");
     }
 
     public Cennik(Double cena, int liczbaLat) {
