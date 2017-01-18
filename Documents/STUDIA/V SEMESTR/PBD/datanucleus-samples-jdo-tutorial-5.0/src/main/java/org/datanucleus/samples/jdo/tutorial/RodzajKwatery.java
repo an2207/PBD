@@ -40,6 +40,11 @@ public class RodzajKwatery {
         this.cenniki = cenniki;
     }
 
+    
+    public RodzajKwatery()
+    {
+    
+    }
     public RodzajKwatery(String nazwa) {
         this.nazwa = nazwa;
     }

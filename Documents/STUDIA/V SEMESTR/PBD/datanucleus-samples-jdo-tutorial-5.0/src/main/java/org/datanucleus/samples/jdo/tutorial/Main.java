@@ -216,7 +216,7 @@ public class Main
         {
             tx.begin();
             System.out.println("Osoba fizyczna");
-            OsobaFizyczna osoba = new OsobaFizyczna("Marcin","Mateusz","Wisniewski","Imie","222","tojestemail");
+            OsobaFizyczna osoba = new OsobaFizyczna("Marcin","Mateusz","Wisniewski","Imie","01234567892","tojestemail");
            
             
             pm.makePersistent(osoba);
@@ -225,15 +225,15 @@ public class Main
             System.out.println(osoba.getPesel());
             osoba.setPesel("nachiczewan");
             osoba.setPesel("333");
-            osoba.setPesel("01234567890");
+            osoba.setPesel("18181818");
             System.out.println(osoba.getPesel());
             
-            OsobaFizyczna osoba2 = new OsobaFizyczna("Marcin","Mateusz","Wisniewski","Imie","01234567892","tojestemail");
+            OsobaFizyczna osoba2 = new OsobaFizyczna();
             pm.makePersistent(osoba2);
  
             
             System.out.println(osoba2.getPesel());
-            osoba2.setPesel("01234567890");
+            osoba2.setPesel("69");
             System.out.println(osoba2.getPesel());
             tx.commit();
         }

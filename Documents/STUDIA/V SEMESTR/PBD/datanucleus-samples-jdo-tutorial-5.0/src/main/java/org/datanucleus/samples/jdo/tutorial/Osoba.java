@@ -5,6 +5,7 @@
  */
 package org.datanucleus.samples.jdo.tutorial;
 
+import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -20,7 +21,9 @@ public class Osoba {
 
     @PrimaryKey @Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT) 
     int osobaId;
+    @Column(allowsNull="true")
     String email;
+    @Column(allowsNull="true")
     String telefon;
     
     public String getEmail() {

@@ -27,6 +27,7 @@ public class Funkcja implements Serializable {
     @Column(jdbcType="VARCHAR", length=64)
     String nazwa;
     @ForeignKey(name="fk_Pracownicy_Funckja", deleteAction = ForeignKeyAction.RESTRICT, updateAction=ForeignKeyAction.CASCADE)
+    @Column(name="OSOBAID")
     ArrayList<OsobaFizyczna> pracownicy;
     
     public String getNazwa() {
@@ -51,5 +52,10 @@ public class Funkcja implements Serializable {
     
     public void addPracownik(OsobaFizyczna p){
         pracownicy.add(p);
+    }
+    
+    public Funkcja()
+    {
+    
     }
 }

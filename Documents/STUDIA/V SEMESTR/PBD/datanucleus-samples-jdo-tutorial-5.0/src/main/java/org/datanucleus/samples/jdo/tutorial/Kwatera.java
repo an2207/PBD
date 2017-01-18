@@ -5,6 +5,9 @@
  */
 package org.datanucleus.samples.jdo.tutorial;
 
+import javax.jdo.annotations.Column;
+import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.ForeignKeyAction;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
@@ -21,6 +24,8 @@ public class Kwatera {
     @PrimaryKey
     int nrKwatery;
     int liczbaMsc;
+    @ForeignKey(name="fk_Rodzaj_kwatera", deleteAction = ForeignKeyAction.RESTRICT, updateAction=ForeignKeyAction.CASCADE)
+    @Column(name="RODZAJID")
     RodzajKwatery rodzaj;
     
     public int getNrSektora() {

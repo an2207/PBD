@@ -53,7 +53,9 @@ public class Pogrzeb {
     public void setZaklad(ZakladPogrzebowy zaklad) {
         this.zaklad = zaklad;
     }
+    public Pogrzeb() {
 
+    }
     public Pogrzeb(Date dzienPogrzebu, Time godzPogrzebu, ZakladPogrzebowy zaklad) {
         this.dzienPogrzebu = dzienPogrzebu;
         this.godzPogrzebu = godzPogrzebu;

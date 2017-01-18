@@ -28,6 +28,11 @@ public class Wlasciciel extends OsobaFizyczna {
         super(imie, drugieImie, nazwisko, drugieNazwisko, pesel, email);
     }
     
+    public Wlasciciel()
+    {
+        super();
+    }
+    
     public Adres getAdres() {
         return adres;
     }

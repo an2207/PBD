@@ -37,6 +37,11 @@ public class Zlecenie {
         this.usluga = usluga;
         this.zleceniodawca = zleceniodawca;
     }
+    
+    public Zlecenie()
+    {
+    
+    }
 
     public Date getDataRozp() {
         return dataRozp;

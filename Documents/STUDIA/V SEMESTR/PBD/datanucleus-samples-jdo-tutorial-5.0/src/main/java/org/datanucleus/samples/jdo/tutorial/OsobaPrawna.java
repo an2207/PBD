@@ -66,6 +66,10 @@ public class OsobaPrawna extends Osoba{
         this.nip = nip;
         this.nazwa = nazwa;
     }
+    
+        public OsobaPrawna() {
+        super();
+    }
 
 }
 

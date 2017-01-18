@@ -105,6 +105,11 @@ public class Adres {
     public Adres(String ulica){
         this.ulica = ulica;
     }
+    
+    public Adres()
+    {
+    
+    }
 
 }
 

@@ -97,5 +97,10 @@ public class AktZgonu   {
         this.imieMatki = imieMatki;
         this.nazwMatki = nazwMatki;
     }
+    
+    public AktZgonu()
+    {
+        
+    }
 
 }

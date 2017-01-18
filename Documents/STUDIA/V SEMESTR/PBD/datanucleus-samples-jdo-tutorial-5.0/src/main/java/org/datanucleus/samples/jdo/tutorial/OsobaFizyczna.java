@@ -20,15 +20,15 @@ import javax.jdo.annotations.Unique;
 @PersistenceCapable
 public class OsobaFizyczna extends Osoba{
   
-    @Column(jdbcType="VARCHAR", length=64)
+    @Column(jdbcType="VARCHAR", length=64, allowsNull = "false")
     String imie;
     @Column(jdbcType = "VARCHAR", length = 64,allowsNull = "true")
     String drugieImie;
-    @Column(jdbcType="VARCHAR", length=64)
+    @Column(jdbcType="VARCHAR", length=64, allowsNull = "false")
     String nazwisko;
     @Column(jdbcType = "VARCHAR", length = 64,allowsNull = "true")
     String drugieNazwisko;
-    @Column(jdbcType="VARCHAR", length=11)
+    @Column(jdbcType="VARCHAR", length=11, allowsNull = "false")
     @Unique
     String pesel;
     
@@ -119,11 +119,17 @@ public class OsobaFizyczna extends Osoba{
     }
 
     public OsobaFizyczna(String imie, String drugieImie, String nazwisko, String drugieNazwisko, String pesel) {
+        super();
         this.imie = imie;
         this.drugieImie = drugieImie;
         this.nazwisko = nazwisko;
         this.drugieNazwisko = drugieNazwisko;
         this.pesel = pesel;
+    }
+    
+    public OsobaFizyczna()
+    {
+        super();
     }
     
     //sunday lista uslug do wykonania przez pracownika

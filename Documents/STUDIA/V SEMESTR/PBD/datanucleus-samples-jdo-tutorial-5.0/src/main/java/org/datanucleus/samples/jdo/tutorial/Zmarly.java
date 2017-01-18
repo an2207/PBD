@@ -166,6 +166,11 @@ public class Zmarly extends OsobaFizyczna{
         if(this.imie.substring(this.imie.length()-1).equals("a")) return true;
         else return false;
     }
+    
+        public Zmarly()
+    {
+       super(); 
+    }
  
  
 }

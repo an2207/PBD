@@ -21,6 +21,10 @@ public class ZakladPogrzebowy extends OsobaPrawna{
     public ZakladPogrzebowy(String nip, String nazwa, String email, String telefon) {
         super(nip, nazwa, email, telefon);
     }
+    
+        public ZakladPogrzebowy() {
+        super();
+    }
 
     public String getOsobaKontImie() {
         return osobaKontImie;

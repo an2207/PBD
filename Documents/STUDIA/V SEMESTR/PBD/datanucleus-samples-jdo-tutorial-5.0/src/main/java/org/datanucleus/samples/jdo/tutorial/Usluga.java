@@ -63,6 +63,11 @@ public class Usluga {
             }
     }
 
+    public Usluga()
+    {
+    
+    }
+    
     public Usluga(String nazwa, Double cena, Integer szacCzas) {
         this.nazwa = nazwa;
         if(cena > 0)
