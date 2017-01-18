@@ -17,6 +17,9 @@ Contributors:
 **********************************************************************/
 package org.datanucleus.samples.jdo.tutorial;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -212,7 +215,7 @@ public class Main
         
          pm = pmf.getPersistenceManager();
         tx = pm.currentTransaction();
-                try
+        try
         {
             tx.begin();
             System.out.println("Osoba fizyczna");
@@ -256,7 +259,44 @@ public class Main
         
         
         System.out.println("");
+
+        pm = pmf.getPersistenceManager();
+        testujZapytania(pm);
+        pm.close();
         System.out.println("End of Tutorial");
         pmf.close();
+    }
+
+    private static void testujZapytania(PersistenceManager pm) {
+        Zapytania zapytania = new Zapytania(pm);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String dataUrodzeniaStr = "05-12-1950";
+        String dataZgonuStr = "04-12-2015";
+
+        Date dataUrodzenia = null;
+        Date dataZgonu = null;
+        try {
+            dataUrodzenia = sdf.parse(dataUrodzeniaStr);
+            dataZgonu = sdf.parse(dataZgonuStr);
+        }
+        catch (Exception e) {}
+
+        Zmarly zmarly = new Zmarly("", dataUrodzenia, dataZgonu, new ArrayList<>(), null, "Michał", "Damian", "Kowalski", "", "50129205934", "", "");
+        pm.makePersistent(zmarly);
+        zmarly = new Zmarly("", dataUrodzenia, dataZgonu, new ArrayList<>(), null, "Maria", "", "Nowak", "", "50129673454", "", "");
+        pm.makePersistent(zmarly);
+        System.out.println("Ile kobiet: " + zapytania.ileKobiet());
+        System.out.println("Ile mezczyzn: " + zapytania.ileMezczyzn());
+
+        String dataOdStr = "05-12-1950";
+        String dataDoStr = "04-12-2015";
+        try {
+            Date dataOd = sdf.parse(dataOdStr);
+            Date dataDo = sdf.parse(dataDoStr);
+        }
+        catch (Exception e) {}
+
+
     }
 }

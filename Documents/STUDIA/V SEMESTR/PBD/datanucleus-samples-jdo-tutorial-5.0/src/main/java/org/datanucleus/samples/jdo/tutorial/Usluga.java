@@ -44,7 +44,7 @@ public class Usluga {
             }
         else
             {
-                System.out.println("Cena nie mo¿e byæ ujemna!");
+                System.out.println("Cena nie moze byc ujemna!");
             }
     }
 
@@ -71,7 +71,7 @@ public class Usluga {
             }
         else
             {
-                System.out.println("Cena nie mo¿e byæ ujemna!");
+                System.out.println("Cena nie moze byc ujemna!");
                 this.cena = 0.0;
             }
         if(szacCzas > 0)
