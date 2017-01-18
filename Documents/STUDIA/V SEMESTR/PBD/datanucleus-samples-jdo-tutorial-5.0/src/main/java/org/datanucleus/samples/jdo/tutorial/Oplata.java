@@ -26,10 +26,14 @@ public class Oplata {
     Date dzienWplaty;
     Date dataObow;
     @ForeignKey(name="fk_oplata_kwatera", deleteAction = ForeignKeyAction.RESTRICT, updateAction=ForeignKeyAction.CASCADE)
+    @Column(name="NRSEKTORA")
+    @Column(name="NRKWATERY")
     Kwatera kwatera;
-    
+    @Column(name="OSOBAID")
     Zmarly zmarly;
+    @Column(name="OSOBAID")
     Wlasciciel wlasciciel;
+    @Column(name="CENNIKID")
     Cennik cennik;
     
     
