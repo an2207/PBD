@@ -6,6 +6,9 @@
 package org.datanucleus.samples.jdo.tutorial;
 
 import java.util.Date;
+import javax.jdo.annotations.Column;
+import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.ForeignKeyAction;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PersistenceCapable;
@@ -22,7 +25,9 @@ public class Oplata {
     int oplataId;
     Date dzienWplaty;
     Date dataObow;
+    @ForeignKey(name="fk_oplata_kwatera", deleteAction = ForeignKeyAction.RESTRICT, updateAction=ForeignKeyAction.CASCADE)
     Kwatera kwatera;
+    
     Zmarly zmarly;
     Wlasciciel wlasciciel;
     Cennik cennik;

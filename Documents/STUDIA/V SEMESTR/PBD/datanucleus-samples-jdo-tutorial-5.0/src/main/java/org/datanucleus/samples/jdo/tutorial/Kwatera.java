@@ -16,13 +16,14 @@ import javax.jdo.annotations.PrimaryKey;
  * @author Anna Hnatkowska
  */
 
-@PersistenceCapable
+@PersistenceCapable(objectIdClass=PKKwat.class)
 public class Kwatera {
 
     @PrimaryKey
     int nrSektora;
     @PrimaryKey
     int nrKwatery;
+    
     int liczbaMsc;
     @ForeignKey(name="fk_Rodzaj_kwatera", deleteAction = ForeignKeyAction.RESTRICT, updateAction=ForeignKeyAction.CASCADE)
     @Column(name="RODZAJID")
@@ -68,4 +69,6 @@ public class Kwatera {
     }
 
 }
+
+
 
