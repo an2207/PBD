@@ -17,6 +17,8 @@ Contributors:
 **********************************************************************/
 package org.datanucleus.samples.jdo.tutorial;
 
+import java.sql.Time;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -261,7 +263,7 @@ public class Main
         System.out.println("");
 
         pm = pmf.getPersistenceManager();
-        testujZapytania(pm);
+        //testujZapytania(pm);
         pm.close();
         System.out.println("End of Tutorial");
         pmf.close();
@@ -299,4 +301,81 @@ public class Main
 
 
     }
+
+    private static void wypelnijBaze(PersistenceManager pm) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
+        //ADRES
+        List list = new ArrayList();
+        list.add(new Adres("Litewska", "42", "3", "51-354", "Wrocław", "Polska"));
+        list.add(new Adres("Plac Grunwaldzki", "15a", "6", "51-500", "Wrocław", "Polska"));
+        for(Object o:list) {
+            pm.makePersistent(o);
+        }
+
+        //AKT ZGONU
+        list = new ArrayList();
+        list.add(new AktZgonu("1242523", sdf.parse("15-05-2005"), new Time(1230195710), "Adam", "Barnaba", "Joanna", "Barnaba"));
+        list.add(new AktZgonu("51362346", sdf.parse("15-05-2005"), new Time(1524621361), "Krzysztof", "Pomusz", "Grażyna", "Pomusz"));
+        for(Object o:list) {
+            pm.makePersistent(o);
+        }
+
+        //CENNIK
+        Cennik cennik;
+        cennik = new Cennik(1500., 10);
+        pm.makePersistent(cennik);
+        cennik = new Cennik(2000., 15);
+        pm.makePersistent(cennik);
+        cennik = new Cennik(3000., 20);
+        pm.makePersistent(cennik);
+        cennik = new Cennik(4500., 30);
+        pm.makePersistent(cennik);
+
+        //FUNKCJA
+        Funkcja funkcja;
+        funkcja = new Funkcja("Grabarz");
+        pm.makePersistent(funkcja);
+        funkcja = new Funkcja("Ogrodnik");
+        pm.makePersistent(funkcja);
+        funkcja = new Funkcja("Sprzątacz");
+        pm.makePersistent(funkcja);
+
+        //KWATERA
+        Kwatera kwatera;
+        kwatera = new Kwatera(3,15,3,new RodzajKwatery("asda")); //FIXME
+        pm.makePersistent(kwatera);
+        kwatera = new Kwatera(6,2,2,new RodzajKwatery("asda")); //FIXME
+        pm.makePersistent(kwatera);
+        kwatera = new Kwatera(18,6,5,new RodzajKwatery("asda")); //FIXME
+        pm.makePersistent(kwatera);
+
+        //OPLATA
+        Oplata oplata;
+
+
+
+        //OSOBA
+        Osoba osoba;
+        osoba = new Osoba("osoba@osobohost.com", "725993023");
+        pm.makePersistent(osoba);
+        osoba = new Osoba("andrzej@gmail.com");
+        pm.makePersistent(osoba);
+        osoba = new Osoba("danuta@grazynnki.pl", "75345235");
+        pm.makePersistent(osoba);
+        osoba = new Osoba("ogier@podrywacze.pl");
+        pm.makePersistent(osoba);
+
+        //OSOBA FIZYCZNA
+        OsobaFizyczna osobaFizyczna;
+        osobaFizyczna = new OsobaFizyczna("Grzegorz", "", "Kowal", "", "88203482039", "osoba@osobohost.com", "725236437");
+        pm.makePersistent(osobaFizyczna);
+        osobaFizyczna = new OsobaFizyczna("Andrzej", "", "Makłowicz", "", "76920902935", "andrzej@gmail.com", "725236437");
+        pm.makePersistent(osobaFizyczna);
+        osobaFizyczna = new OsobaFizyczna("Danuta", "", "Andruta", "", "69051569699", "danuta@grazynki.pl", "696969696");
+        pm.makePersistent(osobaFizyczna);
+
+        //OSOBA PRAWNA
+    }
 }
+
