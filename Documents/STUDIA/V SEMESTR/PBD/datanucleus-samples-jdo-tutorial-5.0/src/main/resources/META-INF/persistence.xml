@@ -16,6 +16,8 @@
             <property name="javax.jdo.option.ConnectionUserName" value="sa"/>
             <property name="javax.jdo.option.ConnectionPassword" value=""/>
             <property name="javax.jdo.option.Mapping" value="h2"/>
+            <property name="javax.jdo.PersistenceManagerFactoryClass"
+                      value="org.datanucleus.api.jdo.JDOPersistenceManagerFactory" />
 
             <!-- ENABLE THESE FOR HSQLDB -->
             <!--property name="javax.jdo.option.ConnectionURL" value="jdbc:hsqldb:mem:nucleus1"/>
